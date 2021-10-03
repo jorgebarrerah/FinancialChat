@@ -1,0 +1,86 @@
+﻿@model int
+<h4>@FinancialChat.Controllers.ChatController.Rooms.GetValueOrDefault(Model)</h4>
+<div class="container">
+    <div class="row">&nbsp;</div>  
+    <div class="row">
+        <div class="col-2">Message</div>
+        <div class="col-12"><input type="text" id="messageInput" size="60"/></div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+<div>
+    <input type="hidden" id="userInput" value="@User.Identity.Name" />
+    <input type="hidden" id="room" value="@Model" />
+</div>
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+<!--
+<div class="row">
+    <div class="col-12">
+        <input type="text" placeholder="User" id="user" />
+        <input type="text" placeholder="Text" id="message" />
+        <button id="btnSendMessage">Send</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div id="messages"></div>
+    </div>
+    <div class="col-6">
+        <div id="notifications"></div>
+    </div>
+</div>
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+
+<script>
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chat").build();
+
+    connection.start().then(() => {
+        connection.invoke("ConnectToRoom", "@Model")
+    }).catch((e) => console.error(e));
+
+    document.getElementById("btnSendMessage").addEventListener("click",
+        (event) => {
+            let room = "@Model";
+            let user = document.getElementById("user").value;
+            let message = document.getElementById("message").value;
+
+            connection.invoke("SendMessage", room, user, message)
+                .catch((err) => console.error(err.toString()));
+
+            document.getElementById("message").value = "";
+            document.getElementById("message").focus();
+
+            event.preventDefault();
+        })
+
+    connection.on("DeliveryMessage", (user, message) => {
+        var message = "<div><b>" + user + "</b>: " + message + "</div>";
+
+        document.getElementById("messages").innerHTML =
+            document.getElementById("messages").innerHTML + message;
+
+    });
+
+</script>
+
+    -->
