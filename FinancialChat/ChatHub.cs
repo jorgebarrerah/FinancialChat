@@ -12,12 +12,11 @@ namespace FinancialChat
     {
         public async Task SendMessage(string room, string user, string message)
         {            
-            string stockCode = string.Empty;
             if (message.Contains("/stock=") && message.Length > 7)
             {
                 message = await GetStock(message);
+                user = "Bot";
             }
-
             await Clients.Group(room).SendAsync("ReceiveMessage", user, message);
         }
 
